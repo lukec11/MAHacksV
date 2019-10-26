@@ -190,7 +190,8 @@ function calcCalories(weight, isNeutered, isObeseProne, idealWeight, activity, a
 This is a function that calculates the calories per day and puts it in the HTML page
 */
 function getCalorieCalc() {
-	calcRER(getActualWeight(), getNeutered(), getObesity(), );
+	let x = calcRER(getActualWeight(), getNeutered(), getObesity(), getIdealActualWeight(), getActivityLevel(), getDOBYear(), getDOBMonth());
+	
 }
 /*
 This array is for the life expectancy calculator for your dog.
