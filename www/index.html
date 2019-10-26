@@ -19,7 +19,7 @@
     <h2>Input the requested values to get your estimate!</h2>
     <div class="block">
       <div class="dob">
-        <h2>Date of Birth (D/M/Y):</h2>
+        <h3>Date of Birth (D/M/Y):</h3>
         <select class="age">
           <option value='01' selected='selected'>1</option>
           <option value="1">1</option>
@@ -103,6 +103,32 @@
           <option value="1990">1990</option>
         </select>
       </div>
+      <div class="activity">
+        <h3>Activity Level: </h3>
+        <input type="radio" value=0>Not Active (0)</input>
+        <input type="radio" value=1>A Little Active (1)</input>
+        <input type="radio" value=2>Less Active(2)</input>
+        <input type="radio" value=3>More Active (3)</input>
+        <input type="radio" value=4>Very Active (4)</input>
+        <input type="radio" value=5>Extremely Active (5)</input>
+      </div>
+      <div class="isNeutered">
+        <h3>Is your dog neutered?:</h3>
+        <input type="radio" value=1>Yes</input>
+        <input type="radio" value=0>No</input>
+      </div>
+      <div class="isObeseProne">
+        <h3>Is your dog prone to obesity?:</h3>
+        <input type="radio" value=1>Yes</input>
+        <input type="radio" value=0>No</input>
+      </div>
+      <div class="idealWeight">
+        <h3>Weight:</h3>
+        <input class="output" type="text" placeholder="Ex.60">
+        <input type="radio" value=0>Kg</input>
+        <input type="radio" value=1>Lbs</input>
+      </div>
+      <button><span>Calculate</span></button>
     </div>
 
 
