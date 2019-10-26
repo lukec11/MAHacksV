@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/lukec11/MAHacksV/issues"
   },
-  "homepage": "https://github.com/lukec11/MAHacksV#readme"
+  "homepage": "https://github.com/lukec11/MAHacksV#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
 }
