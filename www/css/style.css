@@ -1,22 +1,19 @@
 body {
   font-family: 'PT Sans', sans-serif;
-  background: #BA8B02;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #181818, #BA8B02);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #181818, #BA8B02); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #1c92d2;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #f2fcfe, #1c92d2);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #f2fcfe, #1c92d2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
-ul {
+/* head */
+nav ul {
   list-style-type: none;
-  padding: 0;
-  overflow: hidden;
   background-color: #333;
-  margin: 0;
-  float: left;
-  position: fixed;
-  top: 0;
-  width: 100%;
+  overflow: hidden;
+  height: 44px;
+  margin-left: auto;
 }
-li {
+nav ul li {
   display: inline;
   float: left;
 }
@@ -28,5 +25,7 @@ a {
   display: block;
   padding: 8px;
   text-decoration: none;
-  color: #FFA500;
+  color: #00bcf0;
 }
+
+/* body */
