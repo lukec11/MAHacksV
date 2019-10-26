@@ -97,6 +97,38 @@ function test() {
 	
 }
 
+function getIdealWeightValue(isKG) {
+	let x = document.getElementById("idealWeight").value;
+	if (isKG) {
+		return x;
+	} else {
+		return x / 2.205;
+	}
+}
+
+function getIdealUnit() {
+	let x = document.getElementsByName("idealUnit");
+
+	for (var i = 0, length = x.length; i < length; i++) {
+		if (x[i].checked) {
+  // do whatever you want with the checked radio
+  return x[i].value;
+
+  // only one radio can be logically checked, don't check the rest
+  break;
+}
+}
+}
+
+function getIdealActualWeight() {
+	let x = getIdealWeightValue(getIdealUnit());
+	return x;
+}
+
+function test() {
+	
+}
+
 /*
 This calculates how many calories per day your dog must eat in order to stay healthy.
 It's based on many factors, including;
@@ -157,7 +189,9 @@ function calcCalories(weight, isNeutered, isObeseProne, idealWeight, activity, a
 /*
 This is a function that calculates the calories per day and puts it in the HTML page
 */
-
+function getCalorieCalc() {
+	calcRER(getActualWeight(), getNeutered(), getObesity(), );
+}
 /*
 This array is for the life expectancy calculator for your dog.
 WARNING. THIS IS A GIMMICK. DO NOT TAKE THIS NUMBER SERIOUSLY. 
