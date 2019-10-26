@@ -1,5 +1,5 @@
 body {
-  font-family: 'PT Sans', sans-serif;
+  font-family:'Ubuntu', sans-serif;
   background: #1c92d2;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #f2fcfe, #1c92d2);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #f2fcfe, #1c92d2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -30,13 +30,17 @@ a {
 
 /* body text */
 .block {
-  border-style: solid;
-  border-width: 2px;
-  border-color: #a6a6a6;
+  background-color: #dff7f7;
+  border-radius: 12px;
 }
 .exp {
   text-align: center;
 }
 h3 {
+  text-align: center;
+}
+.hidden {
+  display: inline-block;
+  vertical-align: top;
   text-align: center;
 }
