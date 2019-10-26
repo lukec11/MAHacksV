@@ -1,18 +1,13 @@
-var http = require('http'), 
-fs = require ('fs');
-var html;
+var express = require('express');
+var app = express();
+var http = require('http').Server(app);
 
-fs.readFile('./www/index.html', function (err, data) {
-  if (err) {
-    throw err; 
- }
- html = data;
-})
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/www/index.html');
+});
 
+app.use(express.static(__dirname + '/www'));
 
-
-http.createServer(function (req, res) {
- res.writeHead(200, {'Content-Type': 'text/html'});
- res.write(html);
- res.end();
-}).listen(8080); 
+http.listen(3000, function(){
+  console.log('listening on *:3000');
+});
