@@ -1,4 +1,7 @@
-//testing
+/*
+These functions are to get the values of the input boxes, and bubbles etc. in the HTML.
+These support other functions in the client JS file but don't modify the HTML page.
+*/
 function getDOBDay() {
 	let x = document.getElementById("DOBDay");
 	let value = x.options[x.selectedIndex].text;
@@ -34,8 +37,64 @@ function getActivityLevel() {
 }
 }
 
+function getNeutered() {
+	let x = document.getElementsByName("neutered");
+
+	for (var i = 0, length = x.length; i < length; i++) {
+		if (x[i].checked) {
+  // do whatever you want with the checked radio
+  return x[i].value;
+
+  // only one radio can be logically checked, don't check the rest
+  break;
+}
+}
+}
+
+function getObesity() {
+	let x = document.getElementsByName("obese");
+
+	for (var i = 0, length = x.length; i < length; i++) {
+		if (x[i].checked) {
+  // do whatever you want with the checked radio
+  return x[i].value;
+
+  // only one radio can be logically checked, don't check the rest
+  break;
+}
+}
+}
+
+function getWeightValue(isKG) {
+	let x = document.getElementById("weight").value;
+	if (isKG) {
+		return x;
+	} else {
+		return x / 2.205;
+	}
+}
+
+function getUnit() {
+	let x = document.getElementsByName("unit");
+
+	for (var i = 0, length = x.length; i < length; i++) {
+		if (x[i].checked) {
+  // do whatever you want with the checked radio
+  return x[i].value;
+
+  // only one radio can be logically checked, don't check the rest
+  break;
+}
+}
+}
+
+function getActualWeight() {
+	let x = getWeightValue(getUnit());
+	return x;
+}
+
 function test() {
-	console.log(getActivityLevel());
+	
 }
 
 /*
@@ -53,6 +112,7 @@ It's just to feed your dog.
 function calcRER(weight) {
 	return 70 * Math.pow(weight, 3/4);
 }
+
 function calcCalories(weight, isNeutered, isObeseProne, idealWeight, activity, ageYears, ageMonths) {
 	let RER = calcRER(weight);
 
@@ -93,6 +153,10 @@ function calcCalories(weight, isNeutered, isObeseProne, idealWeight, activity, a
 
     return newRER;
 }
+
+/*
+This is a function that calculates the calories per day and puts it in the HTML page
+*/
 
 /*
 This array is for the life expectancy calculator for your dog.
