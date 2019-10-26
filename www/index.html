@@ -8,7 +8,7 @@
     <meta charset = "utf-8" >
     <title>KibbleCalc</title>
   </head>
-  <body>
+  <body onload="test()">
     <nav>
       <ul>
         <li><a href = ""><i class="fas fa-calculator"></i> Calculator</a></li>
@@ -117,19 +117,19 @@
       </div>
       <div class="isNeutered">
         <h3>Is your dog neutered?:</h3>
-        <input type="radio" value=1 name="neutered">Yes</input>
-        <input type="radio" value=0name="neutered">No</input>
+        <input type="radio" value=true name="neutered">Yes</input>
+        <input type="radio" value=false name="neutered">No</input>
       </div>
       <div class="isObeseProne">
         <h3>Is your dog prone to obesity?:</h3>
-        <input type="radio" value=1 name="obese">Yes</input>
-        <input type="radio" value=0 name="obese">No</input>
+        <input type="radio" value=true name="obese">Yes</input>
+        <input type="radio" value=false name="obese">No</input>
       </div>
       <div class="idealWeight">
         <h3>Weight:</h3>
-        <input class="output" type="text" placeholder="Ex.60">
-        <input type="radio" value=0 name="unit">Kg</input>
-        <input type="radio" value=1 name="unit">Lbs</input>
+        <input class="output" type="text" placeholder="Ex.60" id="weight">
+        <input type="radio" value=true name="unit">Kg</input>
+        <input type="radio" value=false name="unit">Lbs</input>
       </div>
       <button><span>Calculate</span></button>
     </div>
