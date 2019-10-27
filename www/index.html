@@ -10,7 +10,7 @@
   <meta charset = "utf-8" >
   <title>KibbleCalc</title>
 </head>
-<body>
+<body onload="onLoadSocketIO()">
   <div class="topnav">
     <img style="width:5%; height: 8%; padding: 5px;" src="image/transparentlogo.png"/>
     <div class="topnav-right">
@@ -118,7 +118,6 @@
         </div>
         <div class="activity">
           <h3>Activity Level: </h3>
-          <input type="radio" value=0 name="activity">Not Active (0)</input>
           <input type="radio" value=1 name="activity">A Little Active (1)</input>
           <input type="radio" value=2 name="activity">Less Active (2)</input>
           <input type="radio" value=3 name="activity">More Active (3)</input>

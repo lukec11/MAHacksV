@@ -29,7 +29,7 @@ function getActivityLevel() {
 	for (var i = 0, length = x.length; i < length; i++) {
 		if (x[i].checked) {
   // do whatever you want with the checked radio
-  return x[i].value;
+  return x[i].value++;
 
   // only one radio can be logically checked, don't check the rest
   break;
@@ -123,6 +123,28 @@ function getIdealActualWeight() {
 	return x;
 }
 
+function ageCalc(year, month, day) {
+  let currentDate = new Date();
+  let dogDate = new Date(year, month, day);
+  const differenceTime = Math.abs(currentDate - dogDate);
+  const differenceDays = Math.ceil((differenceTime / (1000 * 60 * 60 * 24) / 365 * 12)); 
+  return differenceDays;
+}
+
+function getActualAge() {
+    let x = ageCalc(getDOBYear(), getDOBMonth(), getDOBYear());
+    return x;
+}
+
+//function to actually calculate the age
+function calculateAgeValue() {
+  let monthString = getDOBMonth();
+  let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  let monthInt = months.indexOf(monthString) + 1;
+  let x = ageCalc(getDOBYear(), monthInt, getDOBDay());
+  return x;
+}
+
 /*
 This calculates how many calories per day your dog must eat in order to stay healthy.
 It's based on many factors, including;
@@ -187,12 +209,36 @@ function calcCalories(weight, isNeutered, isObeseProne, idealWeight, activity, a
 This is a function that calculates the calories per day and puts it in the HTML page
 */
 function getCalorieCalc() {
-	let x = calcCalories(getActualWeight(), getNeutered(), getObesity(), getIdealActualWeight(), getActivityLevel(), getActualAge());
-  document.getElementById("calorieOut").innerHTML = x;
-  unhideCalorieOut();
+    let actualWeighttmp = getActualWeight();
+    let neuteredtmp = getNeutered();
+    let obesitytmp = getObesity();
+    let idealWeighttmp = getIdealActualWeight();
+    let activityLeveltmp = getActivityLevel();
+    let agetmp = calculateAgeValue();
 
-  document.getElementById("weightDifferenceOut").innerHTML = Math.abs(getActualWeight() - getIdealActualWeight());
-  return x;
+
+    let x = calcCalories(actualWeighttmp, neuteredtmp, obesitytmp, idealWeighttmp, activityLeveltmp, agetmp);
+    document.getElementById("calorieOut").innerHTML = Math.floor(x);
+    unhideCalorieOut();
+
+    document.getElementById("weightDifferenceOut").innerHTML = Math.abs(actualWeighttmp - idealWeighttmp);
+
+    let emitToSocket = {
+        weight: actualWeighttmp,
+        neutered: getNeutered === true,
+        obesity: getObesity === true,
+        idealWeight: idealWeighttmp,
+        activityLevel: activityLeveltmp,
+        age: agetmp
+    };
+
+    var socket = io.connect('http://127.0.0.1:3000');
+    socket.on('connect', function(data) {
+    socket.emit('JSONData', emitToSocket);
+    console.log(emitToSocket);
+});
+
+    return x;
 }
 
 //support method to unhide element
@@ -201,34 +247,26 @@ function unhideCalorieOut() {
   x.style.display = "block";
 }
 
-//function to calculate difference in dates
-
-function ageCalc(year, month, day) {
-  let currentDate = new Date();
-  let dogDate = new Date(year, month, day);
-  const differenceTime = Math.abs(currentDate - dogDate);
-  const differenceDays = Math.ceil((differenceTime / (1000 * 60 * 60 * 24) / 365 * 12)); 
-  return differenceDays;
-}
-
-function getActualAge() {
-    let x = ageCalc(getDOBYear(), getDOBMonth(), getDOBYear());
-    return x;
-}
-
-function calculateValues() {
-  let monthString = getDOBMonth();
-  let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  let monthInt = months.indexOf(monthString) + 1;
-  let x = ageCalc(getDOBYear(), monthInt, getDOBDay());
-  return x;
-}
-
 //console.log(calcCalories(10, true, true, 1, 1, 1));
 
 //socket io stuff to store data on servers
 
- var socket = io.connect('http://127.0.0.1:3000');
- socket.on('connect', function(data) {
-    socket.emit('join', 'Hello World from client');
- });
+function onLoadSocketIO() {
+    console.log("onload");
+    var socket = io.connect('http://127.0.0.1:3000');
+
+    socket.on('connect', function(data) {
+        console.log("connected")
+    });
+
+    socket.on("hello", function(hello) {
+        console.log(hello);
+    })
+}
+
+console.log("onload");
+var socket = io.connect('http://127.0.0.1:3000');
+
+socket.on('connect', function(data) {
+    console.log("connected")
+});
