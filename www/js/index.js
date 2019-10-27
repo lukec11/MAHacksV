@@ -224,4 +224,11 @@ function calculateValues() {
   return x;
 }
 
-console.log(calcCalories(10, true, true, 1, 1, 1));
+//console.log(calcCalories(10, true, true, 1, 1, 1));
+
+//socket io stuff to store data on servers
+
+ var socket = io.connect('http://127.0.0.1:3000');
+ socket.on('connect', function(data) {
+    socket.emit('join', 'Hello World from client');
+ });
