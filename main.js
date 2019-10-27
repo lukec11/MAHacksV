@@ -39,6 +39,24 @@ io.on('connection', function(client) {
         console.log("this is the json array of objects: " + dataArray.arrayOfObjects[0].weight);
         fs.writeFileSync('.data.json', JSON.stringify(dataArray));
     });
+    client.on('dataCharts',function(event){ 
+        console.log('Received message from client!',event);
+        let parallelArrays = {
+        	age: [],
+        	activity: [],
+        	obesity: [],
+        	weight: [],
+        	idealWeight: []
+        }
+        for(i = 0; i < dataArray.arrayOfObjects.length; i++) {
+        	parallelArrays.age.push(dataArray.arrayOfObjects[i].age);
+        	parallelArrays.activity.push(dataArray.arrayOfObjects[i].activity);
+        	parallelArrays.obesity.push(dataArray.arrayOfObjects[i].obesity);
+        	parallelArrays.weight.push(dataArray.arrayOfObjects[i].weight);
+        	parallelArrays.idealWeight.push(dataArray.arrayOfObjects[i].idealWeight);
+        }
+        socket.emit("dataInObject", parallelArrays);
+    });
     /*client.on('data',function(event){ 
         console.log('Received data from client!',event);
     });*/
