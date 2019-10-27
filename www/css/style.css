@@ -1,5 +1,5 @@
 body {
-  font-family:'Ubuntu', sans-serif;
+  font-family: 'Raleway', sans-serif;
   background: #2193b0;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -52,13 +52,16 @@ body {
   background-color: #dff7f7;
   border-radius: 12px;
   float: right;
+  padding: 10px;
 }
 .exp {
   text-align: left;
   float: left;
 }
-h3 {
-  text-align: center;
+h2 {
+  text-align: left;
+  line-height: 150%;
+  padding-bottom: 10px;
 }
 .hidden {
   display: inline-block;

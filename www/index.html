@@ -2,23 +2,24 @@
 <html>
 <head>
   <link rel = "stylesheet" type ="text/css" href = "css/style.css" >
-  <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a7ea3a1104.js" crossorigin="anonymous"></script>
   <script src="js/index.js"></script>
   <meta charset = "utf-8" >
   <title>KibbleCalc</title>
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><a href = ""><i class="fas fa-calculator"></i> Calculator</a></li>
-      <li><a href = ""><i class="fas fa-chart-line"></i> Stats</a></li>
-      <li><a href = ""><i class="far fa-clock"></i> Life Expectancy</a></li>
-    </ul>
-  </nav>
+  <div class="topnav">
+    <img style="width:5%; height: 8%; padding: 5px; border-right: 3px solid #9DE3EE" src="image/titlelogo.png"/>
+    <div class="topnav-right">
+        <a href = ""><i class="fas fa-calculator"></i> Calculator</a>
+        <a href = ""><i class="fas fa-chart-line"></i> Stats</a>
+        <a href = ""><i class="far fa-clock"></i> Life Expectancy</a>
+    </div>
+  </div>
   <div class="exp">
     <h1><b>KibbleCalc Calculator<b></h1>
-      <h2><b>The calculator uses various characteristics of your dogs in order to estimate<br>the amount of calories needed to maintain a healthy lifestyle for your canine friend.<br>Input the requested values to get your estimate!<b></h2>
+      <h2><b>The calculator uses various characteristics<br> of your dogs in order to <br>estimate the amount of calories needed <br>to maintain a healthy lifestyle for your canine friend.<br>Input the requested values to get your estimate!<b></h2>
       </div>
       <div class="block">
         <div class="dob">
@@ -74,7 +75,6 @@
           </select>
           <select class="age" id="DOBYear">
             <option value='2019' selected='selected'>2019</option>
-            <option value="2019">2019</option>
             <option value="2018">2018</option>
             <option value="2017">2017</option>
             <option value="2016">2016</option>
