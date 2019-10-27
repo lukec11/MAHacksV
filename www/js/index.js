@@ -197,12 +197,16 @@ function getCalorieCalc() {
 	let x = calcCalories(getActualWeight(), getNeutered(), getObesity(), getIdealActualWeight(), getActivityLevel(), getActualAge());
   document.getElementById("calorieOut").innerHTML = x;
   unhideCalorieOut();
+  
+  let weightDifference = Math.abs(getActualWeight() - getIdealActualWeight());
+
+  document.getElementById("weightDifferenceOut").innerHTML = Math.abs(getActualWeight() - getIdealActualWeight());
   return x;
 }
 
 //support method to unhide element
 function unhideCalorieOut() {
-  var x = document.getElementById("calorieOut");
+  var x = document.getElementById("hiddenDiv");
   x.style.display = "block";
 }
 
@@ -217,6 +221,11 @@ function ageCalc(year, month, day) {
 }
 
 function getActualAge() {
+    let x = ageCalc(getDOBYear(), getDOBMonth(), getDOBYear());
+    return x;
+}
+
+function calculateValues() {
   let monthString = getDOBMonth();
   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   let monthInt = months.indexOf(monthString) + 1;
