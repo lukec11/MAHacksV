@@ -107,6 +107,106 @@ h2 {
 /* Variables */
 .age {
   font-family: 'Raleway', sans-serif;
-  font-size: 14px;
-  margin: auto;
+  font-size: 18px;
+  border: solid 2px #247D95;
+  border-radius: 12px;
+  background-color: #C2F0F0;
+  color: #247D95;
+  width: 120px;
+  -moz-transition: all .5s ease-in;
+  -o-transition: all .5s ease-in;
+  -webkit-transition: all .5s ease-in;
+  transition: all .5s ease-in;
+  padding: 5px;
+}
+.age:hover {
+  background-color: #5B86E5;
+  border-color: #C2F0F0;
+  color: #C2F0F0;
+}
+.selectMenu, .radioMenu, .isNeuteredMenu, .isObeseProneMenu, .weightMenu, .idealWeightMenu {
+  text-align: center;
+  font-size: 18px;
+}
+.dot {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -moz-transition: all .5s ease-in;
+  -o-transition: all .5s ease-in;
+  -webkit-transition: all .5s ease-in;
+  transition: all .5s ease-in;
+  background-color: #C2F0F0;
+  color: #247D95;
+  top: 4px;
+  height: 18px;
+  width: 18px;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-right: 7px;
+  display: inline-block;
+  position: relative;
+  border: solid 2px #247D95;
+}
+.dot:hover {
+  background-color: #5B86E5;
+  border-color: #C2F0F0;
+  color: #C2F0F0;
+}
+.dot:checked {
+  background-color: #5B86E5;
+  border-color: #C2F0F0;
+  color: #C2F0F0;
+}
+#weight, #idealWeight {
+  background-color: #C2F0F0;
+  border: solid 2px #247D95;
+  border-radius: 12px;
+  color: #247D95;
+  font-size: 18px;
+}
+.calcButtonMenu {
+  text-align: center;
+  border-top: solid 4px #247D95;
+  margin-top: 12px;
+}
+.calcButton {
+  margin-top: 12px;
+  font-size: 28px;
+  border-radius: 12px;
+  background-color: #C2F0F0;
+  color: #247D95;
+  font-family: 'Raleway', sans-serif;
+  border: solid 2px #247D95;
+}
+.calcButton span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.calcButton span::after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+.calcButton:hover span {
+  padding-right: 25px;
+}
+
+.calcButton:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.calcButton:hover {
+  -moz-transition: all .5s ease-in;
+  -o-transition: all .5s ease-in;
+  -webkit-transition: all .5s ease-in;
+  transition: all .5s ease-in;
+  background-color: #5B86E5;
+  border-color: #C2F0F0;
+  color: #C2F0F0;
 }
