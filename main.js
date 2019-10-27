@@ -4,6 +4,12 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var fs = require("fs");
 
+var dataArray = {arrayOfObjects: []};
+
+if (fs.existsSync(".data.json")) {
+    var dataArray = JSON.parse(fs.readFileSync(".data.json", "utf8"));
+}
+
 app.get('/', function(req, res){
 	res.sendFile(__dirname + '/www/index.html');
 });
@@ -26,6 +32,12 @@ io.on('connection', function(client) {
 	});
 	client.on('message',function(event){ 
         console.log('Received message from client!',event);
+    });
+    client.on('JSONData',function(event){ 
+        console.log('Received message from client stuff!', event);
+        dataArray.arrayOfObjects.push(event);
+        console.log("this is the json array of objects: " + dataArray.arrayOfObjects[0].weight);
+        fs.writeFileSync('.data.json', JSON.stringify(dataArray));
     });
     /*client.on('data',function(event){ 
         console.log('Received data from client!',event);

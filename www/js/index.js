@@ -218,7 +218,7 @@ function getCalorieCalc() {
 
 
     let x = calcCalories(actualWeighttmp, neuteredtmp, obesitytmp, idealWeighttmp, activityLeveltmp, agetmp);
-    document.getElementById("calorieOut").innerHTML = x;
+    document.getElementById("calorieOut").innerHTML = Math.floor(x);
     unhideCalorieOut();
 
     document.getElementById("weightDifferenceOut").innerHTML = Math.abs(actualWeighttmp - idealWeighttmp);
@@ -234,8 +234,8 @@ function getCalorieCalc() {
 
     var socket = io.connect('http://127.0.0.1:3000');
     socket.on('connect', function(data) {
-    socket.emit('message', emitToSocket);
-    console.log("connected")
+    socket.emit('JSONData', emitToSocket);
+    console.log(emitToSocket);
 });
 
     return x;
