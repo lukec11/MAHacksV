@@ -15,11 +15,19 @@ http.listen(3000, function(){
 	console.log('listening on *:3000');
 });
 
+var socket = io.listen(http);
+
 io.on('connection', function(client) {  
 	console.log('Client connected...');
 
 	client.on('join', function(data) {
 		console.log(data);
-		client.emit('messages', 'Hello from server');
+		client.emit('hello', 'Hello from server');
 	});
+	client.on('message',function(event){ 
+        console.log('Received message from client!',event);
+    });
+    /*client.on('data',function(event){ 
+        console.log('Received data from client!',event);
+    });*/
 });
