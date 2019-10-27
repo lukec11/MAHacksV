@@ -188,7 +188,7 @@ h2 {
 }
 /* Variables */
 h3 {
-  font-size: 25px;
+  font-size: 21px;
 }
 .age {
   font-family: 'Raleway', sans-serif;
@@ -211,7 +211,7 @@ h3 {
 }
 .selectMenu, .radioMenu, .isNeuteredMenu, .isObeseProneMenu, .weightMenu, .idealWeightMenu {
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
 }
 .dot {
