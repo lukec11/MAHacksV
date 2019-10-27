@@ -149,42 +149,35 @@ function calcCalories(weight, isNeutered, isObeseProne, idealWeight, activity, a
     */
 
     //function targets RER to hit ideal weight
-    let newRER = 1.0;
+    let RER = calcRER(idealWeight);
+    let newRER = RER;
+
     if (idealWeight > weight) {
-    	RER = 1.5 * calcRER(idealWeight);
-    }
-    else if (idealWeight < weight) {
-    	RER = calcRER(idealWeight);
-    }
-    else {
-    	RER = calcRER(weight);
+    	newRER += 1.5 * RER - RER;
     }
 
     //function makes up for the dog being neutered
     if (isNeutered) {
-    	RER *= 1.6;
+    	newRER += RER * 1.6 - RER;
     }
     else {
-    	RER *= 1.8;
+    	newRER += RER * 1.8 - RER;
     }
 
     //function makes up for the dog being obese prone or inactive
     if (isObeseProne) {
-    	RER *= 1.3;
-    }
-    else {
-        RER *= 1.0;
+    	newRER += RER * 1.3 - RER;
     }
 
     //function makes up for activity level of the dog on a 1-5 scale
-    RER *= activity;
+    newRER += RER * activity - RER;
 
     //function makes up for age of the dog
     if (ageMonths < 4) {
-    	RER *= 3;
+    	newRER += RER * 3 - RER;
     }
     else {
-    	RER *= 2;
+    	newRER += RER * 2 - RER;
     }
 
     return RER;
