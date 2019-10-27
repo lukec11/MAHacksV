@@ -43,12 +43,13 @@ function getNeutered() {
 	for (var i = 0, length = x.length; i < length; i++) {
 		if (x[i].checked) {
   // do whatever you want with the checked radio
-  return x[i].value;
+  return (x[i].value === "true");
 
   // only one radio can be logically checked, don't check the rest
   break;
 }
 }
+return false;
 }
 
 function getObesity() {
@@ -57,12 +58,13 @@ function getObesity() {
 	for (var i = 0, length = x.length; i < length; i++) {
 		if (x[i].checked) {
   // do whatever you want with the checked radio
-  return x[i].value;
+  return (x[i].value === "true");
 
   // only one radio can be logically checked, don't check the rest
   break;
 }
 }
+return false;
 }
 
 function getWeightValue(isKG) {
@@ -80,7 +82,7 @@ function getUnit() {
 	for (var i = 0, length = x.length; i < length; i++) {
 		if (x[i].checked) {
   // do whatever you want with the checked radio
-  return x[i].value;
+  return (x[i].value === "true");
 
   // only one radio can be logically checked, don't check the rest
   break;
@@ -93,8 +95,32 @@ function getActualWeight() {
 	return x;
 }
 
-function test() {
-	
+function getIdealWeightValue(isKG) {
+	let x = document.getElementById("idealWeight").value;
+	if (isKG) {
+		return x;
+	} else {
+		return x / 2.205;
+	}
+}
+
+function getIdealUnit() {
+	let x = document.getElementsByName("idealUnit");
+
+	for (var i = 0, length = x.length; i < length; i++) {
+		if (x[i].checked) {
+  // do whatever you want with the checked radio
+  return (x[i].value === "true");
+
+  // only one radio can be logically checked, don't check the rest
+  break;
+}
+}
+}
+
+function getIdealActualWeight() {
+	let x = getIdealWeightValue(getIdealUnit());
+	return x;
 }
 
 /*
@@ -113,62 +139,89 @@ function calcRER(weight) {
 	return 70 * Math.pow(weight, 3/4);
 }
 
-function calcCalories(weight, isNeutered, isObeseProne, idealWeight, activity, ageYears, ageMonths) {
-	let RER = calcRER(weight);
+function calcCalories(weight, isNeutered, isObeseProne, idealWeight, activity, ageMonths) {  
+    /*
+    isNeutered: bool
+    isObeseProne: bool
+    idealWeight: int
+    activity: int on a scale of 1-5
+    ageMonths: int
+    */
+
+    //function targets RER to hit ideal weight
+    let RER = calcRER(idealWeight);
+    let newRER = RER;
+
+    if (idealWeight > weight) {
+    	newRER += 1.5 * RER - RER;
+    }
 
     //function makes up for the dog being neutered
     if (isNeutered) {
-    	RER *= 1.6;
+    	newRER += RER * 1.6 - RER;
     }
     else {
-    	RER *= 1.8;
+    	newRER += RER * 1.8 - RER;
     }
 
     //function makes up for the dog being obese prone or inactive
     if (isObeseProne) {
-    	RER *= 1.3;
-    }
-
-    //function targets RER to hit ideal weight
-    if (idealWeight > weight) {
-    	let newRER = 1.5 * calcRER(idealWeight);
-    }
-    else if (idealWeight < weight) {
-    	let newRER = calcRER(idealWeight);
-    }
-    else {
-    	let newRER = calcRER(weight);
+    	newRER += RER * 1.3 - RER;
     }
 
     //function makes up for activity level of the dog on a 1-5 scale
-    newRER *= activity;
+    newRER += RER * activity - RER;
 
     //function makes up for age of the dog
     if (ageMonths < 4) {
-    	newRER *= 3;
+    	newRER += RER * 3 - RER;
     }
     else {
-    	newRER *= 2;
+    	newRER += RER * 2 - RER;
     }
 
-    return newRER;
+    return RER;
 }
 
 /*
 This is a function that calculates the calories per day and puts it in the HTML page
 */
+function getCalorieCalc() {
+	let x = calcCalories(getActualWeight(), getNeutered(), getObesity(), getIdealActualWeight(), getActivityLevel(), getActualAge());
+  document.getElementById("calorieOut").innerHTML = x;
+  unhideCalorieOut();
 
-/*
-This array is for the life expectancy calculator for your dog.
-WARNING. THIS IS A GIMMICK. DO NOT TAKE THIS NUMBER SERIOUSLY. 
-This info is based on this study: 
-https:www.psychologytoday.com/us/blog/canine-corner/201505/how-long-will-your-dog-live
+  document.getElementById("weightDifferenceOut").innerHTML = Math.abs(getActualWeight() - getIdealActualWeight());
+  return x;
+}
 
-The index of each number is the age at which the number is based on.
-In other words, lifeExpectancy = number + indexOfNumber
-*/
-lifeExpectancy = [13.7, 12.8, 11.9, 10.9, 10.0, 9.0, 8.1, 7.2, 6.3, 5.4, 4.6, 3.9, 3.2, 2.6, 2.0, 1.6, 1.3, 1.1];
+//support method to unhide element
+function unhideCalorieOut() {
+  var x = document.getElementById("hiddenDiv");
+  x.style.display = "block";
+}
 
-function calcLifeExpectancy(age) {
-	return lifeExpectancy[age];
-};
+//function to calculate difference in dates
+
+function ageCalc(year, month, day) {
+  let currentDate = new Date();
+  let dogDate = new Date(year, month, day);
+  const differenceTime = Math.abs(currentDate - dogDate);
+  const differenceDays = Math.ceil((differenceTime / (1000 * 60 * 60 * 24) / 365 * 12)); 
+  return differenceDays;
+}
+
+function getActualAge() {
+    let x = ageCalc(getDOBYear(), getDOBMonth(), getDOBYear());
+    return x;
+}
+
+function calculateValues() {
+  let monthString = getDOBMonth();
+  let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  let monthInt = months.indexOf(monthString) + 1;
+  let x = ageCalc(getDOBYear(), monthInt, getDOBDay());
+  return x;
+}
+
+console.log(calcCalories(10, true, true, 1, 1, 1));

@@ -1,32 +1,29 @@
 <!DOCTYPE>
 <html>
-  <head>
-    <link rel = "stylesheet" type ="text/css" href = "css/style.css" >
-    <link href="https://fonts.googleapis.com/css?family=Tajawal|Ubuntu&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a7ea3a1104.js" crossorigin="anonymous"></script>
-    <script src="js/index.js"></script>
-    <meta charset = "utf-8" >
-    <title>KibbleCalc</title>
-  </head>
-  <body onload="test()">
-
-    <div class="topnav">
-      <img style="width:5%; height: 8%; padding: 5px; border-right: 3px solid #9DE3EE" src="image/titlelogo.png"/>
-      <div class="topnav-right">
-          <a href = ""><i class="fas fa-calculator"></i> Calculator</a>
-          <a href = ""><i class="fas fa-chart-line"></i> Stats</a>
-          <a href = ""><i class="far fa-clock"></i> Life Expectancy</a>
-      </div>
-    </div>
-    <div class="inline">
-      <div class="exp">
-        <h1><b>KibbleCalc Calculator<b></h1>
-        <h2><b>The calculator uses various characteristics of your dogs in order to estimate<br>the amount of calories needed to maintain a healthy lifestyle for your canine friend.<br>Input the requested values to get your estimate!<b></h2>
+<head>
+  <link rel = "stylesheet" type ="text/css" href = "css/style.css" >
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a7ea3a1104.js" crossorigin="anonymous"></script>
+  <script src="js/index.js"></script>
+  <meta charset = "utf-8" >
+  <title>KibbleCalc</title>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href = ""><i class="fas fa-calculator"></i> Calculator</a></li>
+      <li><a href = ""><i class="fas fa-chart-line"></i> Stats</a></li>
+      <li><a href = ""><i class="far fa-clock"></i> Life Expectancy</a></li>
+    </ul>
+  </nav>
+  <div class="exp">
+    <h1><b>KibbleCalc Calculator<b></h1>
+      <h2><b>The calculator uses various characteristics of your dogs in order to estimate<br>the amount of calories needed to maintain a healthy lifestyle for your canine friend.<br>Input the requested values to get your estimate!<b></h2>
       </div>
       <div class="block">
         <div class="dob">
           <h3>Date of Birth (D/M/Y):</h3>
-          <select class="age">
+          <select class="age" id="DOBDay">
             <option value='01' selected='selected'>1</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -60,7 +57,7 @@
             <option value="30">30</option>
             <option value="31">31</option>
           </select>
-          <select class = "age">
+          <select class = "age" id="DOBMonth">
             <option value='01' selected='selected'>January</option>
             <option value="1">January</option>
             <option value="2">February</option>
@@ -75,8 +72,9 @@
             <option value="11">November</option>
             <option value="12">December</option>
           </select>
-          <select class="age">
+          <select class="age" id="DOBYear">
             <option value='2019' selected='selected'>2019</option>
+            <option value="2019">2019</option>
             <option value="2018">2018</option>
             <option value="2017">2017</option>
             <option value="2016">2016</option>
@@ -110,11 +108,12 @@
         </div>
         <div class="activity">
           <h3>Activity Level: </h3>
-          <input type="radio" value=1 name="activity">A Little Active</input>
-          <input type="radio" value=2 name="activity">Less Active</input>
-          <input type="radio" value=3 name="activity">More Active</input>
-          <input type="radio" value=4 name="activity">Very Active</input>
-          <input type="radio" value=5 name="activity">Extremely Active</input>
+          <input type="radio" value=0 name="activity">Not Active (0)</input>
+          <input type="radio" value=1 name="activity">A Little Active (1)</input>
+          <input type="radio" value=2 name="activity">Less Active (2)</input>
+          <input type="radio" value=3 name="activity">More Active (3)</input>
+          <input type="radio" value=4 name="activity">Very Active (4)</input>
+          <input type="radio" value=5 name="activity">Extremely Active (5)</input>
         </div>
         <div class="isNeutered">
           <h3>Is your dog neutered?:</h3>
@@ -126,19 +125,28 @@
           <input type="radio" value=true name="obese">Yes</input>
           <input type="radio" value=false name="obese">No</input>
         </div>
-        <div class="idealWeight">
+        <div class="weight">
           <h3>Weight:</h3>
           <input class="output" type="text" placeholder="Ex.60" id="weight">
           <input type="radio" value=true name="unit">Kg</input>
           <input type="radio" value=false name="unit">Lbs</input>
         </div>
-        <button><span>Calculate</span></button>
+        <div class="weight">
+          <h3>Ideal Weight:</h3>
+          <input class="output" type="text" placeholder="Ex.60" id="idealWeight">
+          <input type="radio" value=true name="idealUnit">Kg</input>
+          <input type="radio" value=false name="idealUnit">Lbs</input>
+        </div>
+        <button onclick="getCalorieCalc()"><span>Calculate</span></button>
       </div>
-      <div class="hidden">
-        <h2>The recommended caloric intake of your dog: </h2><h3>x</h3><h3> Calories</h3>
+      <div class="hidden" id="hiddenDiv">
+        <h2>The recommended caloric intake of your dog: </h2>
+        <div class="outputValue" id="calorieOut"></div>
+        <h3> Calories</h3>
+        <br>
+        <h2>Your dog's weight will change by: </h2>
+        <div class="outputValue" id="weightDifferenceOut"></div>
+        <h3> Kg</h3>
       </div>
-    </div>
-
-
-  </body>
-</html>
+    </body>
+    </html>
