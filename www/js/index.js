@@ -82,7 +82,7 @@ function getUnit() {
 	for (var i = 0, length = x.length; i < length; i++) {
 		if (x[i].checked) {
   // do whatever you want with the checked radio
-  return x[i].value;
+  return (x[i].value === "true");
 
   // only one radio can be logically checked, don't check the rest
   break;
@@ -110,7 +110,7 @@ function getIdealUnit() {
 	for (var i = 0, length = x.length; i < length; i++) {
 		if (x[i].checked) {
   // do whatever you want with the checked radio
-  return x[i].value;
+  return (x[i].value === "true");
 
   // only one radio can be logically checked, don't check the rest
   break;
@@ -197,8 +197,6 @@ function getCalorieCalc() {
 	let x = calcCalories(getActualWeight(), getNeutered(), getObesity(), getIdealActualWeight(), getActivityLevel(), getActualAge());
   document.getElementById("calorieOut").innerHTML = x;
   unhideCalorieOut();
-  
-  let weightDifference = Math.abs(getActualWeight() - getIdealActualWeight());
 
   document.getElementById("weightDifferenceOut").innerHTML = Math.abs(getActualWeight() - getIdealActualWeight());
   return x;
