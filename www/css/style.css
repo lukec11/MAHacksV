@@ -1,8 +1,9 @@
 body {
   font-family: 'Raleway', sans-serif;
-  background: #2193b0;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-weight: 400;
+  background: #36D1DC;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   margin: 10px;
 }
 
@@ -11,19 +12,19 @@ body {
 .topnav {
   overflow: hidden;
   background: #1c92d2;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #f2fcfe, #1c92d2);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #f2fcfe, #1c92d2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(to right, rgba(242,252,254,.6), rgba(194, 240, 240, .6));  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, rgba(242,252,254,.6), rgba(194, 240, 240, .6)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   border-radius: 12px;
 }
 
 .topnav a {
   float: left;
-  color: #9DE3EE;
+  color: #5B86E5;
   text-align: center;
   padding: 14px 16px;
   padding-bottom: 5px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 24px;
 }
 
 .topnav a::after {
@@ -42,32 +43,70 @@ body {
 .topnav-right {
   float: right;
   bottom: 6px;
+  font-weight: 800;
 }
 
 /* body text */
-.inline {
-
-}
 .block {
-  background-color: #dff7f7;
+  background-color: rgba(194,194,240,.6);
   border-radius: 12px;
   float: right;
-  padding: 10px;
+  margin-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
 }
 .exp {
   text-align: left;
   float: left;
+  margin-top: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 12px;
+  background-color: rgba(194,194,240,.6);
+  margin-bottom: 30px;
+}
+h1 {
+  padding: 3px;
+  border-bottom: solid 4px #247D95;
 }
 h2 {
   text-align: left;
   line-height: 150%;
-  padding-bottom: 10px;
 }
-.hidden {
+.hidden{
+  padding-top: 10px;
   display: inline-block;
   vertical-align: top;
   text-align: center;
   display: none;
+  border-top: solid 4px #247D95;
+}
+.hidden h2, .hidden h3, .outputValue {
+  animation: fadein 3s ease-in alternate 1;
+  -webkit-animation: fadeIn 3s ease-in alternate 1;
+  -moz-animation: fadeIn 3s ease-in alternate 1;
+  text-align: center;
 }
 
+
+/*animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@-moz-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 /* Variables */
+.age {
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  margin: auto;
+}
