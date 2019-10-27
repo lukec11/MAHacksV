@@ -18,25 +18,29 @@ socket.on('connect', function(data) {
 socket.on("dataInObject", function(dataInObject) {
   console.log(dataInObject);
   data = dataInObject;
-  newLineChart("Age vs. Activity", data.age, data.activity, "Age of Dogs in Months", "Activity Level on a Scale of 1-5", chart1);
-  newLineChart("Weight vs. Ideal Weight", data.weight, data.);
+  let chartVar1 = newLineChart("Age vs. Activity", data.age, data.activity, "Age of Dogs in Months", "Activity Level on a Scale of 1-5", chart1);
+  let chartVar2 = newPieChart("% of Dogs at risk for obesity", data.obesity, "Obesity Risk", "No Obesity risk", chart2);
+  let chartVar3 = newLineChart("Weight vs. Ideal Weight", data.weight, data.idealWeight, "Weight in Kg", "Ideal Weight in Kg", chart3);
+  let chartVar4 =  newLineChart("Weight vs. Age", data.weight, data.age, "Weight in Kg", "Age in Months", chart4)
 })  
 
 function newLineChart(title, dataArrayX, dataArrayY, labelX, labelY, canvasElement) {
 
-  dataArrayXY = [];
+  let bottomLabels = [];
 
-  console.log(dataArrayXY);
-
-  for (i = 0; i < dataArrayX.length; i++) {
-    dataArrayXY.push({x: dataArrayX[i], y: dataArrayY[i]})
+  let x = 0;
+  let len = dataArrayY.length
+  while(x < len){ 
+    bottomLabels.push(Math.floor(dataArrayY[x])); 
+    x++
   }
-  console.log(dataArrayXY);
 
-  var myChart = new Chart(chart1, {
-    type: 'line',
+  bottomLabels.sort(function(a, b){return a-b});
+
+  return new Chart(canvasElement, {
+    type: "line",
     data: {
-      labels: [1, 2, 3, 4, 5],
+      labels: bottomLabels,
       datasets: [
       {
         label: labelX,
@@ -49,6 +53,41 @@ function newLineChart(title, dataArrayX, dataArrayY, labelX, labelY, canvasEleme
         borderWidth: 1
       }
       ]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            reverse: false
+          }
+        }]
+      }
+    }
+  });
+}
+
+function newPieChart(title, dataArray, labelX, labelY, canvasElement) {
+
+  let trueCounter = 0;
+
+  for (i = 0; i < dataArray.length; i++) {
+    if(dataArray[i] == true) {
+      trueCounter++;
+    }
+  }
+
+  let falseCounter = dataArray.length - trueCounter;
+
+  return new Chart(canvasElement, {
+    type: "doughnut",
+    data: {
+      datasets: [
+      {
+        data: [trueCounter, falseCounter],
+        borderWidth: 1
+      }
+      ],
+      labels: ["Obesity Risk", "No Obesity Risk"],
     },
     options: {
       scales: {

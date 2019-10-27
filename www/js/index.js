@@ -58,7 +58,7 @@ function getObesity() {
 	for (var i = 0, length = x.length; i < length; i++) {
 		if (x[i].checked) {
   // do whatever you want with the checked radio
-  return (x[i].value === "true");
+  return (x[i].value == "true");
 
   // only one radio can be logically checked, don't check the rest
   break;
@@ -82,7 +82,7 @@ function getUnit() {
 	for (var i = 0, length = x.length; i < length; i++) {
 		if (x[i].checked) {
   // do whatever you want with the checked radio
-  return (x[i].value === "true");
+  return (x[i].value == "true");
 
   // only one radio can be logically checked, don't check the rest
   break;
@@ -223,10 +223,25 @@ function getCalorieCalc() {
 
     document.getElementById("weightDifferenceOut").innerHTML = Math.abs(actualWeighttmp - idealWeighttmp);
 
-    let emitToSocket = {
+    let obesityVal;
+    let neuteredVal;
+
+    if (obesitytmp === true) {
+        obesityVal = true;
+    } else {
+        obesityVal = false;
+    }
+
+    if (neuteredtmp === true) {
+        neuteredVal = true;
+    } else {
+        neuteredVal = false;
+    }
+
+    var emitToSocket = {
         weight: actualWeighttmp,
-        neutered: getNeutered === true,
-        obesity: getObesity === true,
+        neutered: neuteredVal,
+        obesity: obesityVal,
         idealWeight: idealWeighttmp,
         activityLevel: activityLeveltmp,
         age: agetmp
@@ -253,12 +268,12 @@ console.log("onload");
 var socket = io.connect('http://127.0.0.1:3000');
 
 socket.on('connect', function(data) {
-        console.log("connected")
-    });
+    console.log("connected")
+});
 
-    socket.on("hello", function(hello) {
-        console.log(hello);
-    })
+socket.on("hello", function(hello) {
+    console.log(hello);
+})
 
 socket.on('connect', function(data) {
     console.log("connected")
