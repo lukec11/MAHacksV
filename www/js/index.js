@@ -139,17 +139,26 @@ function calcRER(weight) {
 	return 70 * Math.pow(weight, 3/4);
 }
 
-function calcCalories(weight, isNeutered, isObeseProne, idealWeight, activity, ageMonths) {
-  let RER = calcRER(weight);
-  
+function calcCalories(weight, isNeutered, isObeseProne, idealWeight, activity, ageMonths) {  
     /*
-    weight: int
     isNeutered: bool
     isObeseProne: bool
     idealWeight: int
     activity: int on a scale of 1-5
     ageMonths: int
     */
+
+    //function targets RER to hit ideal weight
+    let newRER = 1.0;
+    if (idealWeight > weight) {
+    	RER = 1.5 * calcRER(idealWeight);
+    }
+    else if (idealWeight < weight) {
+    	RER = calcRER(idealWeight);
+    }
+    else {
+    	RER = calcRER(weight);
+    }
 
     //function makes up for the dog being neutered
     if (isNeutered) {
@@ -163,31 +172,22 @@ function calcCalories(weight, isNeutered, isObeseProne, idealWeight, activity, a
     if (isObeseProne) {
     	RER *= 1.3;
     }
-
-    //function targets RER to hit ideal weight
-    let newRER = 1;
-    if (idealWeight > weight) {
-    	newRER = 1.5 * calcRER(idealWeight);
-    }
-    else if (idealWeight < weight) {
-    	newRER = calcRER(idealWeight);
-    }
     else {
-    	newRER = calcRER(weight);
+        RER *= 1.0;
     }
 
     //function makes up for activity level of the dog on a 1-5 scale
-    newRER *= activity;
+    RER *= activity;
 
     //function makes up for age of the dog
     if (ageMonths < 4) {
-    	newRER *= 3;
+    	RER *= 3;
     }
     else {
-    	newRER *= 2;
+    	RER *= 2;
     }
 
-    return newRER;
+    return RER;
 }
 
 /*
