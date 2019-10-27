@@ -188,13 +188,13 @@ function calcCalories(weight, isNeutered, isObeseProne, idealWeight, activity, a
     }
 
     return newRER;
-  }
+}
 
 /*
 This is a function that calculates the calories per day and puts it in the HTML page
 */
 function getCalorieCalc() {
-	let x = calcRER(getActualWeight(), getNeutered(), getObesity(), getIdealActualWeight(), getActivityLevel(), getActualAge());
+	let x = calcCalories(getActualWeight(), getNeutered(), getObesity(), getIdealActualWeight(), getActivityLevel(), getActualAge());
   document.getElementById("calorieOut").innerHTML = x;
   unhideCalorieOut();
   return x;
