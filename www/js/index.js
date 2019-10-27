@@ -165,14 +165,15 @@ function calcCalories(weight, isNeutered, isObeseProne, idealWeight, activity, a
     }
 
     //function targets RER to hit ideal weight
+    let newRER = 1;
     if (idealWeight > weight) {
-    	let newRER = 1.5 * calcRER(idealWeight);
+    	newRER = 1.5 * calcRER(idealWeight);
     }
     else if (idealWeight < weight) {
-    	let newRER = calcRER(idealWeight);
+    	newRER = calcRER(idealWeight);
     }
     else {
-    	let newRER = calcRER(weight);
+    	newRER = calcRER(weight);
     }
 
     //function makes up for activity level of the dog on a 1-5 scale
@@ -237,3 +238,6 @@ lifeExpectancy = [13.7, 12.8, 11.9, 10.9, 10.0, 9.0, 8.1, 7.2, 6.3, 5.4, 4.6, 3.
 function calcLifeExpectancy(age) {
 	return lifeExpectancy[age];
 };
+
+
+console.log(calcCalories(10, true, true, 1, 1, 1));
