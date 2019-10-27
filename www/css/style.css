@@ -11,11 +11,11 @@ body {
   font-size: 42px;
   margin: none;
   text-align: center;
-  -webkit-animation: color_change 8s infinite;
-  -moz-animation: color_change 8s infinite;
-  -o-animation: color_change 8s infinite;
-  -ms-animation: color_change 8s infinite;
-  animation: color_change 8s infinite;
+  -webkit-animation: color_change 10s infinite;
+  -moz-animation: color_change 10s infinite;
+  -o-animation: color_change 10s infinite;
+  -ms-animation: color_change 10s infinite;
+  animation: color_change 10s infinite;
   font-weight: 700;
 }
 /* nav bar */
@@ -121,69 +121,105 @@ h2 {
 }
 
 @-moz-keyframes fadeIn {
-    0% {
-      color: #5B86E5;
-    }
-    50% {
-      color: #36D1DC;
-    }
-    100% {
-      color: #5B86E5
-    }
-}
-@-webkit-keyframes color_change {
   0% {
+    color: #247D95;
+  }
+  25% {
+    color: #36D1DC;
+  }
+  50%{
     color: #5B86E5;
   }
-  50% {
+  75%{
     color: #36D1DC;
   }
   100% {
-    color: #5B86E5
+    color: #247D95;
+  }
+}
+@-webkit-keyframes color_change {
+  0% {
+    color: #247D95;
+  }
+  25% {
+    color: #36D1DC;
+  }
+  50%{
+    color: #5B86E5;
+  }
+  75%{
+    color: #36D1DC;
+  }
+  100% {
+    color: #247D95;
   }
 }
 @-moz-keyframes color_change {
   0% {
+    color: #247D95;
+  }
+  25% {
+    color: #36D1DC;
+  }
+  50%{
     color: #5B86E5;
   }
-  50% {
+  75%{
     color: #36D1DC;
   }
   100% {
-    color: #5B86E5
+    color: #247D95;
   }
 }
 @-ms-keyframes color_change {
   0% {
+    color: #247D95;
+  }
+  25% {
+    color: #36D1DC;
+  }
+  50%{
     color: #5B86E5;
   }
-  50% {
+  75%{
     color: #36D1DC;
   }
   100% {
-    color: #5B86E5
+    color: #247D95;
   }
 }
 @-o-keyframes color_change {
   0% {
+    color: #247D95;
+  }
+  25% {
+    color: #36D1DC;
+  }
+  50%{
     color: #5B86E5;
   }
-  50% {
+  75%{
     color: #36D1DC;
   }
   100% {
-    color: #5B86E5
+    color: #247D95;
   }
 }
 @keyframes color_change {
   0% {
+    color: #247D95;
+  }
+  25% {
+    color: #36D1DC;
+  }
+  50%{
     color: #5B86E5;
   }
-  50% {
+  75%{
     color: #36D1DC;
   }
   100% {
-    color: #5B86E5
+    color: #247D95;
   }
 }
 /* Variables */
