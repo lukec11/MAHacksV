@@ -40,7 +40,7 @@ io.on('connection', function(client) {
         fs.writeFileSync('.data.json', JSON.stringify(dataArray));
     });
     client.on('dataCharts',function(event){ 
-        console.log('Received message from client!',event);
+        console.log('Received message from client!', event);
         let parallelArrays = {
         	age: [],
         	activity: [],
@@ -50,7 +50,7 @@ io.on('connection', function(client) {
         }
         for(i = 0; i < dataArray.arrayOfObjects.length; i++) {
         	parallelArrays.age.push(dataArray.arrayOfObjects[i].age);
-        	parallelArrays.activity.push(dataArray.arrayOfObjects[i].activity);
+        	parallelArrays.activity.push(dataArray.arrayOfObjects[i].activityLevel);
         	parallelArrays.obesity.push(dataArray.arrayOfObjects[i].obesity);
         	parallelArrays.weight.push(dataArray.arrayOfObjects[i].weight);
         	parallelArrays.idealWeight.push(dataArray.arrayOfObjects[i].idealWeight);

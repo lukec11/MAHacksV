@@ -249,23 +249,16 @@ function unhideCalorieOut() {
 
 //console.log(calcCalories(10, true, true, 1, 1, 1));
 
-//socket io stuff to store data on servers
+console.log("onload");
+var socket = io.connect('http://127.0.0.1:3000');
 
-function onLoadSocketIO() {
-    console.log("onload");
-    var socket = io.connect('http://127.0.0.1:3000');
-
-    socket.on('connect', function(data) {
+socket.on('connect', function(data) {
         console.log("connected")
     });
 
     socket.on("hello", function(hello) {
         console.log(hello);
     })
-}
-
-console.log("onload");
-var socket = io.connect('http://127.0.0.1:3000');
 
 socket.on('connect', function(data) {
     console.log("connected")
