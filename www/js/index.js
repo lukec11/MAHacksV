@@ -43,12 +43,13 @@ function getNeutered() {
 	for (var i = 0, length = x.length; i < length; i++) {
 		if (x[i].checked) {
   // do whatever you want with the checked radio
-  return x[i].value;
+  return (x[i].value === "true");
 
   // only one radio can be logically checked, don't check the rest
   break;
 }
 }
+return false;
 }
 
 function getObesity() {
@@ -57,12 +58,13 @@ function getObesity() {
 	for (var i = 0, length = x.length; i < length; i++) {
 		if (x[i].checked) {
   // do whatever you want with the checked radio
-  return x[i].value;
+  return (x[i].value === "true");
 
   // only one radio can be logically checked, don't check the rest
   break;
 }
 }
+return false;
 }
 
 function getWeightValue(isKG) {
@@ -93,10 +95,6 @@ function getActualWeight() {
 	return x;
 }
 
-function test() {
-	
-}
-
 function getIdealWeightValue(isKG) {
 	let x = document.getElementById("idealWeight").value;
 	if (isKG) {
@@ -125,10 +123,6 @@ function getIdealActualWeight() {
 	return x;
 }
 
-function test() {
-	
-}
-
 /*
 This calculates how many calories per day your dog must eat in order to stay healthy.
 It's based on many factors, including;
@@ -146,8 +140,8 @@ function calcRER(weight) {
 }
 
 function calcCalories(weight, isNeutered, isObeseProne, idealWeight, activity, ageMonths) {
-    let RER = calcRER(weight);
-    
+  let RER = calcRER(weight);
+  
     /*
     weight: int
     isNeutered: bool
@@ -193,7 +187,7 @@ function calcCalories(weight, isNeutered, isObeseProne, idealWeight, activity, a
     }
 
     return newRER;
-}
+  }
 
 /*
 This is a function that calculates the calories per day and puts it in the HTML page
@@ -202,7 +196,7 @@ function getCalorieCalc() {
 	let x = calcRER(getActualWeight(), getNeutered(), getObesity(), getIdealActualWeight(), getActivityLevel(), getActualAge());
   document.getElementById("calorieOut").innerHTML = x;
   unhideCalorieOut();
-	return x;
+  return x;
 }
 
 //support method to unhide element
