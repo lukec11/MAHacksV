@@ -224,20 +224,4 @@ function getActualAge() {
   return x;
 }
 
-/*
-This array is for the life expectancy calculator for your dog.
-WARNING. THIS IS A GIMMICK. DO NOT TAKE THIS NUMBER SERIOUSLY. 
-This info is based on this study: 
-https:www.psychologytoday.com/us/blog/canine-corner/201505/how-long-will-your-dog-live
-
-The index of each number is the age at which the number is based on.
-In other words, lifeExpectancy = number + indexOfNumber
-*/
-lifeExpectancy = [13.7, 12.8, 11.9, 10.9, 10.0, 9.0, 8.1, 7.2, 6.3, 5.4, 4.6, 3.9, 3.2, 2.6, 2.0, 1.6, 1.3, 1.1];
-
-function calcLifeExpectancy(age) {
-	return lifeExpectancy[age];
-};
-
-
 console.log(calcCalories(10, true, true, 1, 1, 1));
