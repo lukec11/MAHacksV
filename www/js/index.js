@@ -145,7 +145,7 @@ function calcRER(weight) {
 	return 70 * Math.pow(weight, 3/4);
 }
 
-function calcCalories(weight, isNeutered, isObeseProne, idealWeight, activity, ageYears, ageMonths) {
+function calcCalories(weight, isNeutered, isObeseProne, idealWeight, activity, ageMonths) {
 	let RER = calcRER(weight);
 
     //function makes up for the dog being neutered
@@ -190,9 +190,36 @@ function calcCalories(weight, isNeutered, isObeseProne, idealWeight, activity, a
 This is a function that calculates the calories per day and puts it in the HTML page
 */
 function getCalorieCalc() {
-	let x = calcRER(getActualWeight(), getNeutered(), getObesity(), getIdealActualWeight(), getActivityLevel(), getDOBYear(), getDOBMonth());
-	
+	let x = calcRER(getActualWeight(), getNeutered(), getObesity(), getIdealActualWeight(), getActivityLevel(), getActualAge());
+  document.getElementById("calorieOut").innerHTML = x;
+  unhideCalorieOut();
+	return x;
 }
+
+//support method to unhide element
+function unhideCalorieOut() {
+  var x = document.getElementById("calorieOut");
+  x.style.display = "block";
+}
+
+//function to calculate difference in dates
+
+function ageCalc(year, month, day) {
+  let currentDate = new Date();
+  let dogDate = new Date(year, month, day);
+  const differenceTime = Math.abs(currentDate - dogDate);
+  const differenceDays = Math.ceil((differenceTime / (1000 * 60 * 60 * 24) / 365 * 12)); 
+  return differenceDays;
+}
+
+function getActualAge() {
+  let monthString = getDOBMonth();
+  let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  let monthInt = months.indexOf(monthString) + 1;
+  let x = ageCalc(getDOBYear(), monthInt, getDOBDay());
+  return x;
+}
+
 /*
 This array is for the life expectancy calculator for your dog.
 WARNING. THIS IS A GIMMICK. DO NOT TAKE THIS NUMBER SERIOUSLY. 

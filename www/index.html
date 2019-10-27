@@ -23,7 +23,7 @@
     <div class="block">
       <div class="dob">
         <h3>Date of Birth (D/M/Y):</h3>
-        <select class="age">
+        <select class="age" id="DOBDay">
           <option value='01' selected='selected'>1</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -57,7 +57,7 @@
           <option value="30">30</option>
           <option value="31">31</option>
         </select>
-        <select class = "age">
+        <select class = "age" id="DOBMonth">
           <option value='01' selected='selected'>January</option>
           <option value="1">January</option>
           <option value="2">February</option>
@@ -72,7 +72,7 @@
           <option value="11">November</option>
           <option value="12">December</option>
         </select>
-        <select class="age">
+        <select class="age" id="DOBYear">
           <option value='2019' selected='selected'>2019</option>
           <option value="2019">2019</option>
           <option value="2018">2018</option>
@@ -137,9 +137,9 @@
         <input type="radio" value=true name="idealUnit">Kg</input>
         <input type="radio" value=false name="idealUnit">Lbs</input>
       </div>
-      <button><span>Calculate</span></button>
+      <button onclick="getCalorieCalc()"><span>Calculate</span></button>
     </div>
-    <div class="hidden">
+    <div class="hidden" id="calorieOut">
       <h2>The recommended caloric intake of your dog: </h2><h3>x</h3><h3> Calories</h3>  
     </div>
 
