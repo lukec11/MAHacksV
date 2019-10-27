@@ -1,40 +1,61 @@
 body {
   font-family:'Ubuntu', sans-serif;
+  background: #2193b0;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  margin: 10px;
+}
+
+/* nav bar */
+
+.topnav {
+  overflow: hidden;
   background: #1c92d2;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #f2fcfe, #1c92d2);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #f2fcfe, #1c92d2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-radius: 12px;
+}
 
-}
-/* nav bar */
-nav ul {
-  list-style-type: none;
-  background-color: #dff7f7;
-  overflow: hidden;
-  height: 44px;
-  margin-left: auto;
-}
-nav ul li {
-  display: inline;
+.topnav a {
   float: left;
-}
-li a {
-  display: block;
-  width: auto;
-}
-a {
-  display: block;
-  padding: 8px;
+  color: #9DE3EE;
+  text-align: center;
+  padding: 14px 16px;
+  padding-bottom: 5px;
   text-decoration: none;
-  color: #00bcf0;
+  font-size: 17px;
+}
+
+.topnav a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #247D95;
+    transition: width .3s;
+}
+
+.topnav a:hover::after {
+    width: 100%;
+}
+
+.topnav-right {
+  float: right;
+  bottom: 6px;
 }
 
 /* body text */
+.inline {
+
+}
 .block {
   background-color: #dff7f7;
   border-radius: 12px;
+  float: right;
 }
 .exp {
-  text-align: center;
+  text-align: left;
+  float: left;
 }
 h3 {
   text-align: center;
@@ -44,3 +65,5 @@ h3 {
   vertical-align: top;
   text-align: center;
 }
+
+/* Variables */
