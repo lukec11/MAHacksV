@@ -146,7 +146,16 @@ function calcRER(weight) {
 }
 
 function calcCalories(weight, isNeutered, isObeseProne, idealWeight, activity, ageMonths) {
-	let RER = calcRER(weight);
+    let RER = calcRER(weight);
+    
+    /*
+    weight: int
+    isNeutered: bool
+    isObeseProne: bool
+    idealWeight: int
+    activity: int on a scale of 1-5
+    ageMonths: int
+    */
 
     //function makes up for the dog being neutered
     if (isNeutered) {
