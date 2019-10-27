@@ -4,9 +4,20 @@ body {
   background: #36D1DC;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  margin: 10px;
+  margin: 3%;
 }
-
+.title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 42px;
+  margin: none;
+  text-align: center;
+  -webkit-animation: color_change 8s infinite;
+  -moz-animation: color_change 8s infinite;
+  -o-animation: color_change 8s infinite;
+  -ms-animation: color_change 8s infinite;
+  animation: color_change 8s infinite;
+  font-weight: 700;
+}
 /* nav bar */
 
 .topnav {
@@ -15,6 +26,9 @@ body {
   background: -webkit-linear-gradient(to right, rgba(242,252,254,.6), rgba(194, 240, 240, .6));  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, rgba(242,252,254,.6), rgba(194, 240, 240, .6)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   border-radius: 12px;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-bottom: 1%;
 }
 
 .topnav a {
@@ -22,9 +36,10 @@ body {
   color: #5B86E5;
   text-align: center;
   padding: 14px 16px;
-  padding-bottom: 5px;
+  padding-bottom: 5%;
   text-decoration: none;
   font-size: 24px;
+  font-weight: 400;
 }
 
 .topnav a::after {
@@ -40,10 +55,8 @@ body {
     width: 100%;
 }
 
-.topnav-right {
+.topnav-right{
   float: right;
-  bottom: 6px;
-  font-weight: 800;
 }
 
 /* body text */
@@ -51,31 +64,34 @@ body {
   background-color: rgba(194,194,240,.6);
   border-radius: 12px;
   float: right;
-  margin-top: 30px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
+  margin-top: 2.1%;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 1%;
+  margin-bottom: 2.1%;
+  font-weight: 400;
 }
 .exp {
   text-align: left;
   float: left;
-  margin-top: 30px;
-  padding-left: 10px;
-  padding-right: 10px;
+  margin-top: 2.1%;
+  padding-left: 5%;
+  padding-right: 5%;
   border-radius: 12px;
   background-color: rgba(194,194,240,.6);
-  margin-bottom: 30px;
+  margin-bottom: 2.1%;
 }
 h1 {
-  padding: 3px;
+  padding: 1%;
   border-bottom: solid 4px #247D95;
 }
 h2 {
   text-align: left;
   line-height: 150%;
+  font-weight: 400;
 }
 .hidden{
-  padding-top: 10px;
+  padding-top: 3%;
   display: inline-block;
   vertical-align: top;
   text-align: center;
@@ -87,6 +103,10 @@ h2 {
   -webkit-animation: fadeIn 3s ease-in alternate 1;
   -moz-animation: fadeIn 3s ease-in alternate 1;
   text-align: center;
+  font-weight: 700;
+}
+.outputValue {
+  font-size: 25px;
 }
 
 
@@ -101,13 +121,78 @@ h2 {
 }
 
 @-moz-keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    0% {
+      color: #5B86E5;
+    }
+    50% {
+      color: #36D1DC;
+    }
+    100% {
+      color: #5B86E5
+    }
+}
+@-webkit-keyframes color_change {
+  0% {
+    color: #5B86E5;
+  }
+  50% {
+    color: #36D1DC;
+  }
+  100% {
+    color: #5B86E5
+  }
+}
+@-moz-keyframes color_change {
+  0% {
+    color: #5B86E5;
+  }
+  50% {
+    color: #36D1DC;
+  }
+  100% {
+    color: #5B86E5
+  }
+}
+@-ms-keyframes color_change {
+  0% {
+    color: #5B86E5;
+  }
+  50% {
+    color: #36D1DC;
+  }
+  100% {
+    color: #5B86E5
+  }
+}
+@-o-keyframes color_change {
+  0% {
+    color: #5B86E5;
+  }
+  50% {
+    color: #36D1DC;
+  }
+  100% {
+    color: #5B86E5
+  }
+}
+@keyframes color_change {
+  0% {
+    color: #5B86E5;
+  }
+  50% {
+    color: #36D1DC;
+  }
+  100% {
+    color: #5B86E5
+  }
 }
 /* Variables */
+h3 {
+  font-size: 25px;
+}
 .age {
   font-family: 'Raleway', sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   border: solid 2px #247D95;
   border-radius: 12px;
   background-color: #C2F0F0;
@@ -117,7 +202,7 @@ h2 {
   -o-transition: all .5s ease-in;
   -webkit-transition: all .5s ease-in;
   transition: all .5s ease-in;
-  padding: 5px;
+  padding: 1%;
 }
 .age:hover {
   background-color: #5B86E5;
@@ -126,7 +211,8 @@ h2 {
 }
 .selectMenu, .radioMenu, .isNeuteredMenu, .isObeseProneMenu, .weightMenu, .idealWeightMenu {
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: 400;
 }
 .dot {
   -webkit-appearance: none;
@@ -138,12 +224,12 @@ h2 {
   transition: all .5s ease-in;
   background-color: #C2F0F0;
   color: #247D95;
-  top: 4px;
-  height: 18px;
-  width: 18px;
+  top: 6px;
+  height: 21px;
+  width: 21px;
   border-radius: 50px;
   cursor: pointer;
-  margin-right: 7px;
+  margin-right: 3%;
   display: inline-block;
   position: relative;
   border: solid 2px #247D95;
@@ -168,10 +254,10 @@ h2 {
 .calcButtonMenu {
   text-align: center;
   border-top: solid 4px #247D95;
-  margin-top: 12px;
+  margin-top: 3%;
 }
 .calcButton {
-  margin-top: 12px;
+  margin-top: 3%;
   font-size: 28px;
   border-radius: 12px;
   background-color: #C2F0F0;
